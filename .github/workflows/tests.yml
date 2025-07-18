@@ -30,14 +30,15 @@ jobs:
         with:
           php-version: 8.4
 
-      - name: Copy .env file
-        run: |
-          cp .env.ci .env
-          cp .env.ci .env.testing
-
       - name: Run composer
         run: |
           composer install --no-interaction
+
+      - name: Copy .env file
+        run: |
+          cp .env.ci .env
+          php artisan key:generate
+          cp .env .env.testing
 
       - name: Run test suite
         run: |
