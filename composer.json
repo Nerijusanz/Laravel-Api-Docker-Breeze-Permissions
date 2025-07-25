@@ -16,6 +16,7 @@
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^3.6",
+        "ergebnis/phpunit-slow-test-detector": "^2.19",
         "fakerphp/faker": "^1.23",
         "itsgoingd/clockwork": "^5.3",
         "larastan/larastan": "^3.0",
