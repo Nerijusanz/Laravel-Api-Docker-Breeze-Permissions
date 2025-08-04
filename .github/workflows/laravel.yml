@@ -40,6 +40,10 @@ jobs:
           php artisan key:generate
           cp .env .env.testing
 
+      - name: Run Pint
+        run: |
+          ./vendor/bin/pint --test
+
       - name: Run Rector
         run: |
           ./vendor/bin/rector --dry-run
@@ -47,10 +51,6 @@ jobs:
       - name: Run Larastan
         run: |
           ./vendor/bin/phpstan analyse
-
-      - name: Run Pint
-        run: |
-          ./vendor/bin/pint --test
 
       - name: Run tests
         run: |
