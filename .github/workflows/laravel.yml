@@ -32,7 +32,7 @@ jobs:
 
       - name: Run composer
         run: |
-          composer install --no-interaction
+          composer install --optimize-autoloader --no-progress --no-interaction --prefer-dist
 
       - name: Copy .env file
         run: |
@@ -40,13 +40,17 @@ jobs:
           php artisan key:generate
           cp .env .env.testing
 
-      - name: Run Larastan
-        run: |
-          ./vendor/bin/phpstan analyse
-
       - name: Run Pint
         run: |
           ./vendor/bin/pint --test
+
+      - name: Run Rector
+        run: |
+          ./vendor/bin/rector --dry-run
+
+      - name: Run Larastan
+        run: |
+          ./vendor/bin/phpstan analyse
 
       - name: Run tests
         run: |
