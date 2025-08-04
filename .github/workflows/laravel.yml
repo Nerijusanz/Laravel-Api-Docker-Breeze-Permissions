@@ -32,7 +32,7 @@ jobs:
 
       - name: Run composer
         run: |
-          composer install --no-interaction
+          composer install --optimize-autoloader --no-dev --no-progress --no-interaction --prefer-dist
 
       - name: Copy .env file
         run: |
