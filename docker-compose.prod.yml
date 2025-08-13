@@ -22,6 +22,7 @@ services:
             - '.:/var/www/html'
         networks:
             - sail
+        container_name: ${DC_CONTAINER_PREFIX}_php
         depends_on:
             - mysql
             - redis
@@ -40,6 +41,7 @@ services:
             - 'sail-mysql:/var/lib/mysql'
         networks:
             - sail
+        container_name: ${DC_CONTAINER_PREFIX}_mysql
         healthcheck:
             test:
                 - CMD
@@ -56,6 +58,7 @@ services:
             - 'sail-redis:/data'
         networks:
             - sail
+        container_name: ${DC_CONTAINER_PREFIX}_redis
         healthcheck:
             test:
                 - CMD

@@ -21,6 +21,7 @@ services:
             - '.:/var/www/html'
         networks:
             - sail
+        container_name: ${DC_CONTAINER_PREFIX}_php
         depends_on:
             - mysql
             - redis
@@ -42,6 +43,7 @@ services:
             - './docker/mysql/create-testing-database.sh:/docker-entrypoint-initdb.d/10-create-testing-database.sh'
         networks:
             - sail
+        container_name: ${DC_CONTAINER_PREFIX}_mysql
         healthcheck:
             test:
                 - CMD
@@ -60,6 +62,7 @@ services:
             - 'sail-redis:/data'
         networks:
             - sail
+        container_name: ${DC_CONTAINER_PREFIX}_redis
         healthcheck:
             test:
                 - CMD
@@ -74,6 +77,7 @@ services:
             - 8031:8025
         networks:
             - sail
+        container_name: ${DC_CONTAINER_PREFIX}_mailpit
     selenium:
         image: selenium/standalone-chromium
         extra_hosts:
@@ -82,6 +86,7 @@ services:
             - '/dev/shm:/dev/shm'
         networks:
             - sail
+        container_name: ${DC_CONTAINER_PREFIX}_selenium
 networks:
     sail:
         driver: bridge
