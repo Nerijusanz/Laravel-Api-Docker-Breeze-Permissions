@@ -55,11 +55,9 @@ services:
     redis:
         image: 'redis:alpine'
         ports:
-            - 6381:6379
-        expose:
-            - '6381'
+            - ${DC_DEV_REDIS_PORTS}
         volumes:
-            - 'sail-redis:/data'
+            - '${DC_DEV_REDIS_VOLUME}'
         networks:
             - sail
         container_name: ${DC_CONTAINER_PREFIX}_redis
