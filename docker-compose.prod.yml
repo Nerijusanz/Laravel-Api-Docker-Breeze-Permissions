@@ -38,7 +38,7 @@ services:
             MYSQL_PASSWORD: '${DB_PASSWORD}'
             MYSQL_ALLOW_EMPTY_PASSWORD: 0
         volumes:
-            - 'sail-mysql:/var/lib/mysql'
+            - '${DC_PROD_DB_VOLUME}'
         networks:
             - sail
         container_name: ${DC_CONTAINER_PREFIX}_mysql
