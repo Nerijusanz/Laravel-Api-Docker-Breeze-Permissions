@@ -10,8 +10,7 @@ services:
         extra_hosts:
             - 'host.docker.internal:host-gateway'
         ports:
-            - '${APP_PORT:-80}:80'
-            - '${VITE_PORT:-5173}:${VITE_PORT:-5173}'
+            - ${DC_PROD_APP_PORTS}
         environment:
             WWWUSER: '${WWWUSER}'
             LARAVEL_SAIL: 1
@@ -19,7 +18,7 @@ services:
             XDEBUG_CONFIG: '${SAIL_XDEBUG_CONFIG:-client_host=host.docker.internal}'
             IGNITION_LOCAL_SITES_PATH: '${PWD}'
         volumes:
-            - '.:/var/www/html'
+            - '${DC_PROD_APP_VOLUME}'
         networks:
             - sail
         container_name: ${DC_CONTAINER_PREFIX}_php
@@ -29,7 +28,7 @@ services:
     mysql:
         image: 'mysql/mysql-server:8.0'
         ports:
-            - '${FORWARD_DB_PORT:-3306}:3306'
+            - ${DC_PROD_DB_PORTS}
         environment:
             MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
             MYSQL_ROOT_HOST: '%'
@@ -38,7 +37,7 @@ services:
             MYSQL_PASSWORD: '${DB_PASSWORD}'
             MYSQL_ALLOW_EMPTY_PASSWORD: 0
         volumes:
-            - 'sail-mysql:/var/lib/mysql'
+            - '${DC_PROD_DB_VOLUME}'
         networks:
             - sail
         container_name: ${DC_CONTAINER_PREFIX}_mysql
@@ -53,9 +52,9 @@ services:
     redis:
         image: 'redis:alpine'
         ports:
-            - '${FORWARD_REDIS_PORT:-6379}:6379'
+            - ${DC_PROD_REDIS_PORTS}
         volumes:
-            - 'sail-redis:/data'
+            - '${DC_PROD_REDIS_VOLUME}'
         networks:
             - sail
         container_name: ${DC_CONTAINER_PREFIX}_redis
