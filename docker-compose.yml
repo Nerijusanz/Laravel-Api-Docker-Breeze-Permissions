@@ -30,7 +30,7 @@ services:
     mysql:
         image: 'mysql/mysql-server:8.0'
         ports:
-            - 3311:3306
+            - ${DC_DEV_DB_PORTS}
         environment:
             MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
             MYSQL_ROOT_HOST: '%'
