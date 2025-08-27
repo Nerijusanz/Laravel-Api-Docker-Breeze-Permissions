@@ -1,0 +1,27 @@
+includes:
+    - ./vendor/larastan/larastan/extension.neon
+    - ./vendor/nesbot/carbon/extension.neon
+
+parameters:
+
+    level: 5
+
+    paths:
+        - ./app/
+        - ./database
+        - ./src/
+
+    scanFiles:
+        - ./_ide_helper_models.php
+
+    excludePaths:
+        analyse:
+            - ./storage/*
+            - ./bootstrap/cache/*
+
+    #tmpDir: var/cache/phpstan
+
+    reportUnmatchedIgnoredErrors: false
+    treatPhpDocTypesAsCertain: false
+    checkMissingCallableSignature: true
+
