@@ -6,6 +6,7 @@ parameters:
 
     paths:
         - ./app/
+        - ./database
         - ./src/
 
     level: 5
