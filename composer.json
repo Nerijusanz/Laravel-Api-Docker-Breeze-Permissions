@@ -66,6 +66,8 @@
             "@php artisan config:clear --ansi",
             "@php artisan test"
         ],
+        "pint": "./vendor/bin/pint --test",
+        "pint-r": "./vendor/bin/pint --repair",
         "phpstan-a": "./vendor/bin/phpstan analyse --memory-limit=-1"
     },
     "extra": {
