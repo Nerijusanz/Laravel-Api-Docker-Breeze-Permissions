@@ -2,6 +2,4 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function (): string {
-    return 'Laravel Api Run';
-});
+Route::get('/', fn (): string => 'Laravel Api Run');
