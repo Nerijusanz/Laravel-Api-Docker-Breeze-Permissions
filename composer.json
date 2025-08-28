@@ -66,6 +66,8 @@
             "@php artisan config:clear --ansi",
             "@php artisan test"
         ],
+        "rector-d":"./vendor/bin/rector process --clear-cache --dry-run",
+        "rector-r":"./vendor/bin/rector process --clear-cache",
         "pint": "./vendor/bin/pint --test",
         "pint-r": "./vendor/bin/pint --repair",
         "phpstan-a": "./vendor/bin/phpstan analyse --memory-limit=-1"
