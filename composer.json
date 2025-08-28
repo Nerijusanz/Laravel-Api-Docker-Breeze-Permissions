@@ -71,7 +71,13 @@
         "rector-fix":"./vendor/bin/rector process --clear-cache",
         "pint": "./vendor/bin/pint --test",
         "pint-fix": "./vendor/bin/pint --repair",
-        "phpstan": "./vendor/bin/phpstan analyse --memory-limit=-1"
+        "phpstan": "./vendor/bin/phpstan analyse --memory-limit=-1",
+        "analyse-all": [
+            "@rector",
+            "@pint",
+            "@phpstan",
+            "@test"
+        ]
     },
     "extra": {
         "laravel": {
