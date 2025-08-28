@@ -40,6 +40,9 @@ jobs:
           php artisan key:generate
           cp .env .env.testing
 
+      - name: Directory Permissions
+        run: chmod -R 777 storage bootstrap/cache
+
       - name: Run Rector
         run: |
           ./vendor/bin/rector --dry-run
