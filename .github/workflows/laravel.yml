@@ -1,38 +1,35 @@
-name: Tests
+name: Laravel
 
 on:
-  pull_request:
-    branches:
-      - main
-      - develop
   push:
-    branches:
-      - main
-      - develop
+  pull_request:
+    types:
+      - opened
+      - ready_for_review
+      - reopened
+      - synchronize
+  schedule:
+    - cron: '0 0 * * *'
 
 jobs:
-  tests:
-    name: Run tests
+  laravel-analyse:
+    if: >
+      github.event_name == 'push' ||
+      (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository)
+
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Cache composer dependencies
-        uses: actions/cache@v4
-        with:
-          path: vendor
-          key: composer-${{ hashFiles('**/composer.lock') }}
-          restore-keys: |
-            composer-
-
-      - name: Install PHP
-        uses: shivammathur/setup-php@v2
+      - uses: shivammathur/setup-php@v2
         with:
           php-version: 8.4
+          tools: composer:v2
+          coverage: none
 
-      - name: Run composer
-        run: |
-          composer install --optimize-autoloader --no-progress --no-interaction --prefer-dist
+      - uses: actions/checkout@v4
+
+      - name: Install Dependencies
+        run: composer install --dev --optimize-autoloader --no-progress --no-interaction --prefer-dist
 
       - name: Copy .env file
         run: |
@@ -45,19 +42,19 @@ jobs:
 
       - name: Run Rector
         run: |
-          ./vendor/bin/rector --dry-run
+          composer rector
 
       - name: Run Pint
         run: |
-          ./vendor/bin/pint --test
+          composer pint
 
       - name: Run Larastan
         run: |
-          ./vendor/bin/phpstan analyse
+          composer phpstan
 
       - name: Run tests
         run: |
-          php artisan test
+          composer test
         env:
           DB_DATABASE: cicd_testing
 
