@@ -1,20 +1,22 @@
 name: Laravel
 
 on:
+
   push:
+    branches:
+      - main
+      - develop
+
   pull_request:
-    types:
-      - opened
-      - ready_for_review
-      - reopened
-      - synchronize
-  schedule:
-    - cron: '0 0 * * *'
+    branches:
+      - main
+      - develop
+
+#  schedule:
+#    - cron: '0 0 * * *'
 
 jobs:
   laravel-analyse:
-    if: >
-      github.event_name == 'pull_request'
 
     runs-on: ubuntu-latest
 
