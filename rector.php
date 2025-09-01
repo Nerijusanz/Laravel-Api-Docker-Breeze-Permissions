@@ -15,6 +15,7 @@ use RectorLaravel\Set\LaravelLevelSetList;
 return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->paths([
         __DIR__.'/app',
+        __DIR__.'/bootstrap/app.php',
         __DIR__.'/database',
         __DIR__.'/routes',
         __DIR__.'/src',
@@ -22,7 +23,9 @@ return static function (RectorConfig $rectorConfig): void {
     ]);
 
     $rectorConfig->skip([
+        __DIR__.'/bootstrap/cache/*',
         __DIR__.'/config',
+        __DIR__.'/storage/*',
         __DIR__.'/vendor',
         ExplicitBoolCompareRector::class,
         FirstClassCallableRector::class,
@@ -43,5 +46,8 @@ return static function (RectorConfig $rectorConfig): void {
         SetList::CODE_QUALITY,
         SetList::DEAD_CODE,
         SetList::TYPE_DECLARATION,
+        SetList::PRIVATIZATION,
+        SetList::EARLY_RETURN,
+        SetList::STRICT_BOOLEANS,
     ]);
 };

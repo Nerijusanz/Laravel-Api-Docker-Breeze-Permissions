@@ -17,10 +17,8 @@ return Application::configure(basePath: dirname(__DIR__))
     })
     ->withExceptions(function (Exceptions $exceptions): void {
 
-        $exceptions->report(function (CustomException $e) {
-            return response()->json([
-                'error' => $e->getMessage(),
-            ], $e->getCode() ?: 500);
-        });
+        $exceptions->report(fn (CustomException $e) => response()->json([
+            'error' => $e->getMessage(),
+        ], $e->getCode() ?: 500));
 
     })->create();
