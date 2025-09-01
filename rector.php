@@ -46,5 +46,8 @@ return static function (RectorConfig $rectorConfig): void {
         SetList::CODE_QUALITY,
         SetList::DEAD_CODE,
         SetList::TYPE_DECLARATION,
+        SetList::PRIVATIZATION,
+        SetList::EARLY_RETURN,
+        SetList::STRICT_BOOLEANS,
     ]);
 };
