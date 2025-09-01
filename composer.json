@@ -74,6 +74,12 @@
             "@phpstan",
             "@test"
         ],
+        "analyse-fix": [
+            "@rector-fix",
+            "@pint-fix",
+            "@phpstan",
+            "@test"
+        ],
         "test": "php artisan test",
         "test-unit": "./vendor/bin/phpunit"
     },
