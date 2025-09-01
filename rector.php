@@ -23,7 +23,9 @@ return static function (RectorConfig $rectorConfig): void {
     ]);
 
     $rectorConfig->skip([
+        __DIR__.'/bootstrap/cache/*',
         __DIR__.'/config',
+        __DIR__.'/storage/*',
         __DIR__.'/vendor',
         ExplicitBoolCompareRector::class,
         FirstClassCallableRector::class,
