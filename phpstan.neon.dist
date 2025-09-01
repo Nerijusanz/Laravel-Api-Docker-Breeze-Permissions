@@ -8,8 +8,11 @@ parameters:
 
     paths:
         - ./app/
+        - ./bootstrap/app.php
         - ./database
+        - ./routes
         - ./src/
+        - ./tests
 
     scanFiles:
         - ./_ide_helper_models.php
