@@ -69,6 +69,7 @@
         "pint-fix": "./vendor/bin/pint --repair",
         "phpstan": "./vendor/bin/phpstan analyse --memory-limit=-1",
         "test": "php artisan test",
+        "test-c": "php artisan test --coverage",
         "phpunit": "./vendor/bin/phpunit",
         "analyse-all": [
             "@rector",
