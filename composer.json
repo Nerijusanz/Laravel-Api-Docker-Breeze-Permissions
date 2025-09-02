@@ -81,7 +81,7 @@
             "@test"
         ],
         "test": "php artisan test --coverage",
-        "test-unit": "./vendor/bin/phpunit"
+        "phpunit": "./vendor/bin/phpunit"
     },
     "extra": {
         "laravel": {
