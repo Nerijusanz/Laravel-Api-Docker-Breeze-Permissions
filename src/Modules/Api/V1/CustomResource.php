@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules;
 
 use Illuminate\Http\JsonResponse;
@@ -8,12 +10,14 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 abstract class CustomResource extends JsonResource
 {
-    public function toResponse($request): JsonResponse
+    abstract public function data(Request $request): array;
+
+    final public function toResponse($request): JsonResponse
     {
         return (new CustomResourceResponse($this))->toResponse($request);
     }
 
-    public function toArray(Request $request): array
+    final public function toArray(Request $request): array
     {
         if (is_null($this->resource)) {
             return [];
@@ -21,6 +25,4 @@ abstract class CustomResource extends JsonResource
 
         return $this->data($request);
     }
-
-    abstract public function data(Request $request): array;
 }
