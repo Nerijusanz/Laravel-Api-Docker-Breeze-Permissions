@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules;
 
 use Exception;
 
-class CustomException extends Exception
+final class CustomException extends Exception
 {
     public static function internalException(): self
     {

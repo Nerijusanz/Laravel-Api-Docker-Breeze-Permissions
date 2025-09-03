@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules;
 
 use Illuminate\Http\Resources\Json\ResourceResponse;
 use Illuminate\Support\Collection;
 
-class CustomResourceResponse extends ResourceResponse
+final class CustomResourceResponse extends ResourceResponse
 {
     /**
      * @param  array|Collection|\Illuminate\Database\Eloquent\Collection  $data

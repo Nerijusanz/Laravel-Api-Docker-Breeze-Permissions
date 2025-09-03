@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules;
 
 use Illuminate\Database\Eloquent\Builder;
@@ -8,7 +10,7 @@ use LogicException;
 
 abstract class CustomModel extends Model
 {
-    public function newEloquentBuilder($query): Builder
+    final public function newEloquentBuilder($query): Builder
     {
         throw new LogicException(sprintf('Model %s must defined `newEloquentBuilder`', self::class));
     }
