@@ -76,12 +76,6 @@
             "@pint",
             "@phpstan",
             "@test"
-        ],
-        "analyse-fix": [
-            "@rector-fix",
-            "@pint-fix",
-            "@phpstan",
-            "@test"
         ]
     },
     "extra": {
