@@ -7,11 +7,12 @@ parameters:
     level: 5
 
     paths:
-        - ./app/
-        - ./bootstrap/app.php
+        - ./app
+        - ./bootstrap
+        - ./config
         - ./database
         - ./routes
-        - ./src/
+        - ./src
         - ./tests
 
     scanFiles:
@@ -21,6 +22,7 @@ parameters:
         analyse:
             - ./storage/*
             - ./bootstrap/cache/*
+            - ./config/clockwork.php
 
     #tmpDir: var/cache/phpstan
 
