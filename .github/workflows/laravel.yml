@@ -29,13 +29,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Cache composer dependencies
+      - name: Cache dependencies PHP
+        id: php-cache
         uses: actions/cache@v4
         with:
-          path: ~/.composer/cache/files
-          key: composer-${{ hashFiles('**/composer.lock') }}
-          restore-keys: |
-            composer-
+          path: vendor
+          key: dependencies-php-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: dependencies-php-composer-
 
       - uses: shivammathur/setup-php@v2
         with:
