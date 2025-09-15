@@ -50,6 +50,7 @@ jobs:
           echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
 
       - name: Install PHP Dependencies
+        if: steps.php-cache.outputs.cache-hit != 'true'
         run: composer install --optimize-autoloader --no-interaction --no-progress  --prefer-dist
 
       - name: Prepare Laravel Setup
